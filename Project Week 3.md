@@ -3,12 +3,13 @@
 NOTE: The courses table has been replaced with the five tables discussed in the lessons. Please do not use courses table going forward in the projects.
 
 ## Find the maximum, average and standard deviation of the nps of a course run per each affiliation (of the instructor) provided there has been more than 11 (to make sure we are not susceptible to small number variations) course runs from instructors of that affiliation. 
-
+```sql
 SELECT max(course_run.nps) AS max_nps, avg(course_run.nps) AS avg_nps, stddev(course_run.nps) AS std_nps,instructors.affiliation
 FROM instructors, course_run
 WHERE instructors.instructor_id = course_run.instructor_id
 GROUP BY instructors.affiliation
 HAVING count(instructors.affiliation) > 11;
+```
 
 ## Retrieve the maximum, average, and standard deviation of the nps of a course run for two levels of teaching experience – early, which is 5 or fewer years of teaching experience, and experienced, which is more than 5 years of experience. 
 
